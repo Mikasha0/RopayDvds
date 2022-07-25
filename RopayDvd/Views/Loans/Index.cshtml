@@ -1,0 +1,64 @@
+﻿@model IEnumerable<RopayDvd.Models.Loan>
+
+@{
+    ViewData["Title"] = "Member Loans";
+}
+
+<h4>@ViewBag.Title</h4>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MemberNumberNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoanTypeNumberNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CopyNumberNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOut)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateDue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateReturned)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.MemberNumberNavigation.MemberFirstName &nbsp;@item.MemberNumberNavigation.MemberLastName
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoanTypeNumberNavigation.LoanTypeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CopyNumberNavigation.CopyNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOut)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateDue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateReturned)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.LoanNumber">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.LoanNumber">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

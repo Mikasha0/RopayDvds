@@ -1,0 +1,59 @@
+﻿@model RopayDvd.Models.DvdTitle
+
+@{
+    ViewData["Title"] = "Edit DVD Title";
+}
+
+<h4>@ViewBag.Title</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="DvdNumber" />
+            <div class="form-group">
+                <label asp-for="CategoryNumber" class="control-label"></label>
+                <select asp-for="CategoryNumber" class="form-control" asp-items="ViewBag.CategoryNumber"></select>
+                <span asp-validation-for="CategoryNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StudioNumber" class="control-label"></label>
+                <select asp-for="StudioNumber" class="form-control" asp-items="ViewBag.StudioNumber"></select>
+                <span asp-validation-for="StudioNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProducerNumber" class="control-label"></label>
+                <select asp-for="ProducerNumber" class="form-control" asp-items="ViewBag.ProducerNumber"></select>
+                <span asp-validation-for="ProducerNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DvdTite" class="control-label"></label>
+                <input asp-for="DvdTite" class="form-control" />
+                <span asp-validation-for="DvdTite" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateReleased" class="control-label"></label>
+                <input asp-for="DateReleased" class="form-control" />
+                <span asp-validation-for="DateReleased" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StandardCharge" class="control-label"></label>
+                <input asp-for="StandardCharge" class="form-control" />
+                <span asp-validation-for="StandardCharge" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PenaltyCharge" class="control-label"></label>
+                <input asp-for="PenaltyCharge" class="form-control" />
+                <span asp-validation-for="PenaltyCharge" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

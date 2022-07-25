@@ -1,0 +1,45 @@
+﻿@model IEnumerable<RopayDvd.Models.DvdCopy>
+
+@{
+    ViewData["Title"] = "DVD Copies";
+}
+
+<h4>@ViewBag.Title</h4>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CopyNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DvdNumberNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DatePurchased)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CopyNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DvdNumberNavigation.DvdTite)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DatePurchased)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CopyNumber">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.CopyNumber">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

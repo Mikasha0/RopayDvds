@@ -1,0 +1,49 @@
+﻿@model IEnumerable<RopayDvd.Models.Loan>
+
+@{
+    ViewData["Title"] = "Report 12";
+}
+
+<h4>@ViewBag.Title</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Member Name
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                Issued Date
+            </th>
+            <th>
+                Dvd Title
+            </th>
+            <th>
+                Loan Age (Day)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @(item.MemberNumberNavigation.MemberFirstName+ " "+item.MemberNumberNavigation.MemberLastName)
+            </td>
+            <td>
+                @item.MemberNumberNavigation.MemberAddress
+            </td>
+            <td>
+                @item.DateOut.ToShortDateString()
+            </td>            
+            <td>                
+                @item.CopyNumberNavigation.DvdNumberNavigation.DvdTite
+            </td>
+            <td>
+                @DateTime.Today.Subtract(item.DateOut).TotalDays 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

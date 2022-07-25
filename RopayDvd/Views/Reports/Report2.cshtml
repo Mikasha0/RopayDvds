@@ -1,0 +1,41 @@
+﻿@model IEnumerable<RopayDvd.Models.CastMember>
+
+@{
+    ViewData["Title"] = "Report-2";
+}
+
+<h4>@ViewBag.Title</h4>
+<div class="row py-3">
+    <div class="col-sm-2">Actor Last Name:</div>
+    <div class="col-sm-6">
+        <form asp-action="Report2">
+            <select name="SelectedActorId" asp-items="@ViewBag.ActorList" class="form-control" onchange="this.form.submit();">
+                <option value="0">Select Actor</option>
+            </select>
+        </form>
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                DVD Title
+            </th>
+            <th>
+                Stock Count
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DvdNumberNavigation.DvdTite)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DvdNumberNavigation.DvdCopies.Count)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<RopayDvd.Models.DvdCopy>
+
+@{
+    ViewData["Title"] = "Report 10";
+}
+
+<h4>@ViewBag.Title</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Dvd Title
+            </th>
+            <th>
+                Copy Number
+            </th>
+            <th>
+                Purchased Date
+            </th>
+            <th>              
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.DvdNumberNavigation.DvdTite
+            </td>
+            <td>
+                @item.CopyNumber
+            </td>
+            <td>
+                @item.DatePurchased.ToShortDateString()
+            </td>            
+            <td>                
+                <a asp-action="Delete" asp-controller="DvdCopies" asp-route-ctrName="Reports" asp-route-id="@item.CopyNumber">Remove</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

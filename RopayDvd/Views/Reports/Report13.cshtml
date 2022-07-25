@@ -1,0 +1,25 @@
+﻿@model IEnumerable<RopayDvd.Models.DvdTitle>
+
+@{
+    ViewData["Title"] = "Report 13";
+}
+
+<h4>@ViewBag.Title (Not Recently Loaned DVD Titles)</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DvdTite)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DvdTite)
+            </td>                    
+        </tr>
+}
+    </tbody>
+</table>

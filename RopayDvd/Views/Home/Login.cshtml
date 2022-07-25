@@ -1,0 +1,32 @@
+﻿@model Login
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Ropay Login";
+}
+<h4>@ViewBag.Title</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-primary"></div>
+            <div class="form-group">
+                <label asp-for="LoginId" class="control-label">Login ID</label>
+                <input asp-for="LoginId" class="form-control" />
+                <span asp-validation-for="LoginId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LoginCode" class="control-label">Passcode</label>
+                <input asp-for="LoginCode" class="form-control" />
+                <span asp-validation-for="LoginCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Loginnnn" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

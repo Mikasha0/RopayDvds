@@ -1,0 +1,33 @@
+﻿@model IEnumerable<RopayDvd.Models.Actor>
+
+@{
+    ViewData["Title"] = "Actor List";
+}
+
+<h4>@ViewBag.Title</h4>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Actor Name
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.ActorFirstName &nbsp; @item.ActorLastName
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ActorNumber">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.ActorNumber">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<RopayDvd.Models.Member>
+
+@{
+    ViewData["Title"] = "Member List";
+}
+
+<h4>@ViewBag.Title</h4>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Member Name
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MemberAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MemberDateOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MembershipCategoryNumberNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.MemberFirstName &nbsp;@item.MemberLastName
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MemberAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MemberDateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MembershipCategoryNumberNavigation.MembershipCategoryDescription)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.MemberNumber">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.MemberNumber">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

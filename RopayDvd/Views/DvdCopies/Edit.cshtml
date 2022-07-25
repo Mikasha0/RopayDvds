@@ -1,0 +1,37 @@
+﻿@model RopayDvd.Models.DvdCopy
+
+@{
+    ViewData["Title"] = "Edit DVD Copy";
+}
+
+<h4>@ViewBag.Title</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>            
+            <div class="form-group">
+                <label asp-for="CopyNumber" class="control-label">Copy Number: @Model.CopyNumber</label>
+                <input type="hidden" asp-for="CopyNumber" />
+            </div>
+            <div class="form-group">
+                <label asp-for="DvdNumber" class="control-label">DVD Title</label>
+                <select asp-for="DvdNumber" class="form-control" asp-items="ViewBag.DvdNumber"></select>
+                <span asp-validation-for="DvdNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DatePurchased" class="control-label"></label>
+                <input asp-for="DatePurchased" class="form-control" />
+                <span asp-validation-for="DatePurchased" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

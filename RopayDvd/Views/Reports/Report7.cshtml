@@ -1,0 +1,78 @@
+﻿@model IEnumerable<RopayDvd.Models.Loan>
+
+@{
+    ViewData["Title"] = "Return Member Loans";
+}
+
+<h4>@ViewBag.Title</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MemberNumberNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoanTypeNumberNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CopyNumberNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOut)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateDue)
+            </th>
+            <th>Standard Charge</th>
+            <th>
+                Penalty Charge
+            </th>
+            <th>Total Charge</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            decimal penalty = 0, standard =item.CopyNumberNavigation.DvdNumberNavigation.StandardCharge * Convert.ToInt32(DateTime.Today.Subtract(item.DateOut).TotalDays);
+            <tr>
+                <td>
+                    @item.MemberNumberNavigation.MemberFirstName &nbsp;@item.MemberNumberNavigation.MemberLastName
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LoanTypeNumberNavigation.LoanTypeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CopyNumberNavigation.CopyNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOut)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateDue)
+                </td>
+                <td>                    
+                    @standard
+                </td>
+                <td>
+                    
+                    @if(item.DateDue<DateTime.Today)
+                    {
+                        penalty = item.CopyNumberNavigation.DvdNumberNavigation.PenaltyCharge * Convert.ToInt32(DateTime.Today.Subtract(item.DateDue).TotalDays);
+                        <span>@penalty</span>
+                    }
+                    else
+                    {
+                        <span>-</span>
+                    }
+                </td>
+                <td>
+                    @(standard + penalty)
+                </td>
+                <td>
+                    <a asp-action="ReturnDVDCopy" asp-controller="Loans" asp-route-id="@item.LoanNumber">Return DVD Copy</a> 
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

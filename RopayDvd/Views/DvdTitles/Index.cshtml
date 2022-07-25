@@ -1,0 +1,76 @@
+﻿@model IEnumerable<RopayDvd.Models.DvdTitle>
+
+@{
+    ViewData["Title"] = "DVD Titles";
+}
+
+<h4>@ViewBag.Title</h4>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div class="row">
+    <div class="col-12">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DvdTite)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DateReleased)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StandardCharge)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PenaltyCharge)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CategoryNumberNavigation)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ProducerNumberNavigation)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StudioNumberNavigation)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DvdTite)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateReleased)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StandardCharge)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PenaltyCharge)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CategoryNumberNavigation.CategoryDescription)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProducerNumberNavigation.ProducerName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StudioNumberNavigation.StudioName)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.DvdNumber">Edit</a> |
+                                <a asp-action="Delete" asp-route-id="@item.DvdNumber">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

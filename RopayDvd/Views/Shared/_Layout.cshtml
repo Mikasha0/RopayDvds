@@ -1,0 +1,171 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg
+            navbar-light bg-info">
+        <h1 class="navbar-brand" style="color:aliceblue; font-weight:800;"  href="#">Ropey's DVD</h1>
+        <!-- hamburger button that toggles the navbar-->
+        <button class="navbar-toggler" type="button"
+                data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon">
+            </span>
+        </button>
+        <!-- navbar links -->
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a asp-action="Index" asp-controller="Home" class="nav-item nav-link">Home</a>
+            </div>
+        </div>
+    </nav>
+    <div class="wrapper d-flex align-items-stretch">
+        <nav id="sidebar">
+            <div class="custom-menu">
+                <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                    <i class="fa fa-bars"></i>
+                    <span class="sr-only">Toggle Menu</span>
+                </button>
+            </div>
+            <div class="p-4 p" style="background-clip="#aa00ff">
+                <h1><a asp-action="Index" asp-controller="Home" class="logo">Ropey D</a></h1>
+                <ul class="list-unstyled components mb-5">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+        <li class="active">
+            <a href="#dataSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Data Entry</a>
+            <ul class="collapse list-unstyled" id="dataSubmenu">
+                <li>
+                    <a asp-action="Index" asp-controller="DvdCategories">DVD Category</a>
+                </li>
+                <li>
+                    <a asp-action="Index" asp-controller="Studios">Studio</a>
+                </li>
+                <li>
+                    <a asp-action="Index" asp-controller="Producers">Producer</a>
+                </li>
+                <li>
+                    <a asp-action="Index" asp-controller="DvdTitles">DVD Title</a>
+                </li>
+                <li>
+                    <a asp-action="Index" asp-controller="DvdCopies">DVD Copy</a>
+                </li>
+                <li>
+                    <a asp-action="Index" asp-controller="Actors">Actor</a>
+                </li>
+                <li>
+                    <a asp-action="Index" asp-controller="Castmembers">Cast Member</a>
+                </li>
+                <li>
+                    <a asp-action="Index" asp-controller="MembershipCategories">Membership Category</a>
+                </li>
+                <li>
+                    <a asp-action="Index" asp-controller="Members">Member</a>
+                </li>
+                <li>
+                    <a asp-action="Index" asp-controller="LoanTypes">Loan Type</a>
+                </li>
+                <li>
+                    <a asp-action="Index" asp-controller="Loans">Member Loan</a>
+                </li>
+            </ul>
+        </li>}
+                    <li>
+                        <a href="#reportSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Report</a>
+                        <ul class="collapse list-unstyled" id="reportSubmenu">
+                            <li>
+                                <a asp-action="Report1" asp-controller="Reports">Report 1</a>
+                            </li>
+                            <li>
+                                <a asp-action="Report2" asp-controller="Reports">Report 2</a>
+                            </li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                <li>
+                    <a asp-action="Report3" asp-controller="Reports">Report 3</a>
+                </li>
+                                <li>
+                                    <a asp-action="Report4" asp-controller="Reports">Report 4</a>
+                                </li>
+                                                <li>
+                                                    <a asp-action="Report5" asp-controller="Reports">Report 5</a>
+                                                </li>
+                                                                <li>
+                                                                    <a asp-action="Report6" asp-controller="Reports">Report 6</a>
+                                                                </li>
+                                                                                <li>
+                                                                                    <a asp-action="Report7" asp-controller="Reports">Report 7</a>
+                                                                                </li>
+                                                                                                <li>
+                                                                                                    <a asp-action="Report8" asp-controller="Reports">Report 8</a>
+                                                                                                </li>
+                                                                                                                <li>
+                                                                                                                    <a asp-action="Report9" asp-controller="Reports">Report 9</a>
+                                                                                                                </li>
+                                                                                                                                <li>
+                                                                                                                                    <a asp-action="Report10" asp-controller="Reports">Report 10</a>
+                                                                                                                                </li>
+                                                                                                                                                <li>
+                                                                                                                                                    <a asp-action="Report11" asp-controller="Reports">Report 11</a>
+                                                                                                                                                </li>
+                                                                                                                                                                <li>
+                                                                                                                                                                    <a asp-action="Report12" asp-controller="Reports">Report 12</a>
+                                                                                                                                                                </li>
+                                                                                                                                                                                <li>
+                                                                                                                                                                                    <a asp-action="Report13" asp-controller="Reports">Report 13</a>
+                                                                                                                                                                                </li>
+                                                                                                                                                                                                <li>
+                                                                                                                                                                                                    <a asp-action="Index" asp-controller="RopayUsers">Report 14</a>
+                                                                                                                                                                                                </li>}
+                        </ul>
+                    </li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+        <li>
+            <a asp-action="Logout" asp-controller="Home">Logout&nbsp;@User.Identity.Name </a>
+        </li>
+ }
+    else
+    {
+<li>
+    <a asp-action="Login" asp-controller="Home">Login</a>
+</li>}
+                </ul>
+                <div class="footer">
+                    <p>
+                        Repory is one of the best DVD Server Center in Nepal
+                    </p>
+                </div>
+
+            </div>
+        </nav>
+
+        <!-- Page Content  -->
+        <div class="container p-4 p-md-5 pt-5">
+            @RenderBody()
+        </div>
+    </div>
+
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/popper.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/main.js"></script>
+</body>
+<footer class="bg-info text-white text-center text-lg-start">
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        <p>
+            Copyright &copy;
+            <script>document.write(new Date().getFullYear());</script> All rights reserved
+        </p>
+    </div>
+</footer>
+</html>

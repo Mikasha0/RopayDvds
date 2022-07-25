@@ -1,0 +1,47 @@
+﻿@model IEnumerable<RopayDvd.Models.Loan>
+
+@{
+    ViewData["Title"] = "Report-3";
+}
+
+<h4>@ViewBag.Title</h4>
+<div class="row py-3">
+    <div class="col-sm-2">Member Last Name:</div>
+    <div class="col-sm-6">
+        <form asp-action="Report3">
+            <select name="SelectedMemberId" asp-items="@ViewBag.MemberList" class="form-control" onchange="this.form.submit();">
+                <option value="0">Select Member</option>
+            </select>
+        </form>
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                DVD Title
+            </th>
+            <th>
+                Copy Number
+            </th>
+            <th>Loan Date</th>
+            <th>Due Date</th>
+            <th>Return Date</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.CopyNumberNavigation.DvdNumberNavigation.DvdTite
+            </td>
+            <td>
+                @item.CopyNumber 
+            </td>
+            <td>@item.DateOut.ToShortDateString() </td>
+            <td>@item.DateDue.ToShortDateString()</td>
+            <td>@item.DateReturned</td>
+        </tr>
+}
+    </tbody>
+</table>

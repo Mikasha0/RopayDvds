@@ -1,0 +1,63 @@
+﻿@model IEnumerable<RopayDvd.Models.Loan>
+
+@{
+    ViewData["Title"] = "Report 11";
+    var datewiseReport = Model.Select(l=>l.DateOut).Distinct();
+}
+
+<h4>@ViewBag.Title</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Loan Date</th>
+            <th>
+                Dvd Title
+            </th>
+            <th>
+                Copy Number
+            </th>
+            <th>
+                Borrower Name
+            </th>
+            <th>   
+                No. of Loans
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in datewiseReport) {
+        <tr>
+            <td>
+                @item.ToShortDateString()
+            </td>
+            <td>
+                <ul>
+                    @foreach (Loan loan in Model.Where(l => l.DateOut == item).OrderBy(l=>l.CopyNumberNavigation.DvdNumberNavigation.DvdTite))
+                    {
+                        <li>@loan.CopyNumberNavigation.DvdNumberNavigation.DvdTite</li>
+                    }
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    @foreach (Loan loan in Model.Where(l => l.DateOut == item).OrderBy(l => l.CopyNumberNavigation.DvdNumberNavigation.DvdTite))
+                    {
+                        <li>@loan.CopyNumber</li>
+                    }
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    @foreach (Loan loan in Model.Where(l => l.DateOut == item).OrderBy(l => l.CopyNumberNavigation.DvdNumberNavigation.DvdTite))
+                    {
+                        <li>@(loan.MemberNumberNavigation.MemberFirstName+" "+loan.MemberNumberNavigation.MemberLastName)</li>
+                    }
+                </ul>                
+            </td>            
+            <td>                
+                @Model.Where(l=>l.DateOut==item).ToList().Count  
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
