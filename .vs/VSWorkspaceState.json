@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\RopayDvd",
+    "\\RopayDvd\\Views",
+    "\\RopayDvd\\Views\\DvdCopies"
   ],
-  "SelectedNode": "\\RopayDvd.sln",
+  "SelectedNode": "\\RopayDvd\\Views\\DvdCopies",
   "PreviewInSolutionExplorer": false
 }
